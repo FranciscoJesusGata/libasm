@@ -3,12 +3,19 @@
 #                                                         :::      ::::::::    #
 #    ft_strlen.s                                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgata-va </var/mail/fgata-va>              +#+  +:+       +#+         #
+#    By: fgata-va <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/07 15:50:33 by fgata-va          #+#    #+#              #
-#    Updated: 2020/04/07 16:25:16 by fgata-va         ###   ########.fr        #
+#    Updated: 2020/04/07 18:14:10 by fgata-va         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-ft_strlen:
-		
+		global _ft_strlen
+		section .text
+_ft_strlen:
+		mov		rax, -1
+_loop:
+		inc		rax
+		cmp		byte [rdi + rax], 0x0
+		jne		_loop
+		ret
