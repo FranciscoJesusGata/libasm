@@ -6,7 +6,7 @@
 /*   By: fgata-va <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/08 23:13:38 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/04/08 23:34:20 by fgata-va         ###   ########.fr       */
+/*   Updated: 2020/04/11 00:02:40 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ size_t		ft_strlen_c(const char *s)
 	return (i);
 }
 
-char		*ft_strcpy(char *dst, const char *src)
+char		*ft_strcpy_c(char *dst, const char *src)
 {
 	int		i;
 
 	i = 0;
-	if (!dst || !src)
+	if (!src)
 		return (NULL);
-	while (dst[i] != '\0')
+	while (src[i] != '\0')
 	{
 		dst[i] = src[i];
 		i++;
