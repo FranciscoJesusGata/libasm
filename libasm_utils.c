@@ -6,7 +6,7 @@
 /*   By: fgata-va <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/08 23:13:38 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/04/11 12:08:01 by fgata-va         ###   ########.fr       */
+/*   Updated: 2020/04/11 20:15:40 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,8 @@ int		ft_strcmp_c(const char *s1, const char *s2)
 	unsigned int	i;
 
 	i = 0;
-	while (((unsigned char)s1[i] != 0 || (unsigned char)s2[i] != 0))
-	{
-		if ((unsigned char)s1[i] != (unsigned char)s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	while (((unsigned char)s1[i] != 0 || (unsigned char)s2[i] != 0) ||
+			((unsigned char)s1[i] != (unsigned char)s2[i]))
 		i++;
-	}
-	if (((unsigned char)s1[i] != (unsigned char)s2[i]))
-		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-	return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
