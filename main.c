@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/07 17:36:38 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/04/11 10:42:51 by fgata-va         ###   ########.fr       */
+/*   Updated: 2020/04/11 12:08:56 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,5 @@ int			main(void)
 		ft_putstr_fd("\033[1;31mKO\n", 1);
 	ft_putstr_fd("\033[0m", 1);
 	ft_putstr_fd("Test_02: ft_strcpy...........", 1);
+	ft_test_cpy();
 }
