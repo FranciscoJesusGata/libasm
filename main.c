@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/07 17:36:38 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/04/11 12:08:56 by fgata-va         ###   ########.fr       */
+/*   Updated: 2020/04/12 20:30:43 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,8 @@ int			main(void)
 	ft_putstr_fd("\033[0m", 1);
 	ft_putstr_fd("Test_02: ft_strcpy...........", 1);
 	ft_test_cpy();
+	ft_putstr_fd("\033[0mTest_03: ft_strcmp...........", 1);
+	ft_test_cmp("test","test");
+	ft_test_cmp("testing", "testinn");
+	ft_test_cmp("testing", "testin");
 }

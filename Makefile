@@ -6,7 +6,7 @@
 #    By: fgata-va </var/mail/fgata-va>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/07 18:47:17 by fgata-va          #+#    #+#              #
-#    Updated: 2020/04/11 10:37:45 by fgata-va         ###   ########.fr        #
+#    Updated: 2020/04/12 18:32:23 by fgata-va         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FORMAT = -fmacho64
 
 CFLAGS += -Wall -Werror -Wextra -L. -lasm -I.
 
-SRC = ft_strlen.s ft_strcpy.s
+SRC = ft_strlen.s ft_strcpy.s ft_strcmp.s
 
 OBJS = $(SRC:.s=.o)
 

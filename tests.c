@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 10:22:37 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/04/11 12:21:35 by fgata-va         ###   ########.fr       */
+/*   Updated: 2020/04/12 20:30:07 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,32 @@ int			ft_test_cpy()
 		ok = 1;
 	}
 	else
+	{
 		ft_putstr_fd("\033[1;31mKO\n", 1);
-	ft_putstr_fd("\033[0mYour function returned: ", 1);
-	ft_putstr_fd(dst, 1);
-	ft_putstr_fd("\nThe program expected: ", 1);
-	ft_putstr_fd(dst2, 1);
+		ft_putstr_fd("\033[0mYour function returned: ", 1);
+		ft_putstr_fd(dst, 1);
+		ft_putstr_fd("\nThe program expected: ", 1);
+		ft_putstr_fd(dst2, 1);
+	}
 	return (ok);
+}
+
+void		ft_test_cmp(char *str1, char *str2)
+{
+	int exp;
+	int act;
+
+	exp = ft_strcmp_c(str1, str2);
+	act = ft_strcmp(str1, str2);
+	if(exp == act)
+		ft_putstr_fd("\033[1;32mOK! ", 1);
+	else
+	{
+		ft_putstr_fd("\033[1;31mKO\n", 1);
+	    ft_putstr_fd("\033[0mYour function returned: ", 1);
+	    ft_putnbr_fd(exp, 1);
+	    ft_putstr_fd("\nThe program expected: ", 1);
+		ft_putnbr_fd(act, 1);
+		write(1,"\n",1);
+	}
 }
