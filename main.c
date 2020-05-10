@@ -64,4 +64,6 @@ int			main(void)
 	ft_test_cmp("test","test");
 	ft_test_cmp("testing", "testinn");
 	ft_test_cmp("testing", "testin");
+	printf("%d\n", ft_write(1, "\n\033[0mHola!\n", 11));
+	printf("%ld\n", write(1, "\n\033[0mHola!\n", 11));
 }

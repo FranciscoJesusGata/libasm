@@ -6,7 +6,7 @@
 /*   By: fgata-va <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/07 18:25:35 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/04/12 19:02:53 by fgata-va         ###   ########.fr       */
+/*   Updated: 2020/05/09 17:14:19 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ char		*ft_strcpy(char *dst, const char *src);
 char		*ft_strcpy_c(char *dst, const char *src);
 int			ft_strcmp(const char *s1, const char *s2);
 int     	ft_strcmp_c(const char *s1, const char *s2);
+int			ft_write(int fd, const void *buf, size_t count);
 int			ft_test_len();
 int			ft_test_cpy();
 void		ft_test_cmp(char *str1, char *str2);
