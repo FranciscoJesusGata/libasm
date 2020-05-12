@@ -6,19 +6,19 @@
 #    By: fgata-va </var/mail/fgata-va>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/07 18:47:17 by fgata-va          #+#    #+#              #
-#    Updated: 2020/05/09 17:15:55 by fgata-va         ###   ########.fr        #
+#    Updated: 2020/05/12 14:53:24 by fgata-va         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+CC = clang
 
 ASM = nasm
 
 FORMAT = -felf64
 
-CFLAGS += -Wall -Werror -Wextra -I.
+CFLAGS += -Wall -Werror -Wextra -I. -g
 
-SRC = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s
+SRC = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
 
 OBJS = $(SRC:.s=.o)
 
@@ -40,3 +40,4 @@ clean:
 fclean: clean
 	@rm -f $(NAME) *.out
 
+re: fclean all

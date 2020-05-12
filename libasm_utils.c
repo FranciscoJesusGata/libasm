@@ -6,7 +6,7 @@
 /*   By: fgata-va <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/08 23:13:38 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/04/12 20:20:09 by fgata-va         ###   ########.fr       */
+/*   Updated: 2020/05/12 14:38:32 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,62 @@ int			ft_strcmp_c(const char *s1, const char *s2)
 		i++;
 	}
 	return (0);
+}
+
+/*char				*ft_strdup_c(const char *s1)
+{
+	char			*s2;
+	size_t			l;
+	unsigned int	i;
+
+	i = 0;
+	l = ft_strlen(s1);
+	s2 = (char *)malloc(l + 1);
+	if (s2)
+	{
+		while (s1[i] != '\0' && i < l)
+		{
+			s2[i] = s1[i];
+			i++;
+		}
+		s2[i] = '\0';
+	}
+	else
+		return (0);
+	return (s2);
+}*/
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (s)
+	{
+		while (*s != '\0')
+		{
+			write(fd, s, 1);
+			s++;
+		}
+	}
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	char		c;
+
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		if (n == -2147483648)
+		{
+			write(fd, "2", 1);
+			n *= -1;
+			n = n % 1000000000;
+		}
+		n *= -1;
+	}
+	if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+	}
+	c = (n % 10) + '0';
+	write(fd, &c, 1);
 }

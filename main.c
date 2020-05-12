@@ -6,50 +6,17 @@
 /*   By: fgata-va <fgata-va@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/07 17:36:38 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/04/12 20:30:43 by fgata-va         ###   ########.fr       */
+/*   Updated: 2020/05/12 14:56:08 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "libasm.h"
 
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (s)
-	{
-		while (*s != '\0')
-		{
-			write(fd, s, 1);
-			s++;
-		}
-	}
-}
-
-void	ft_putnbr_fd(int n, int fd)
-{
-	char		c;
-
-	if (n < 0)
-	{
-		write(fd, "-", 1);
-		if (n == -2147483648)
-		{
-			write(fd, "2", 1);
-			n *= -1;
-			n = n % 1000000000;
-		}
-		n *= -1;
-	}
-	if (n > 9)
-	{
-		ft_putnbr_fd(n / 10, fd);
-	}
-	c = (n % 10) + '0';
-	write(fd, &c, 1);
-}
-
 int			main(void)
 {
+	char *s1;
+
 	ft_putstr_fd("\033[1;36mLIBASM TESTER\033[0m\n", 1);
 	ft_putstr_fd("By: fgata-va\n\n", 1);
 	ft_putstr_fd("Test_01: ft_strlen...........", 1);
@@ -64,6 +31,11 @@ int			main(void)
 	ft_test_cmp("test","test");
 	ft_test_cmp("testing", "testinn");
 	ft_test_cmp("testing", "testin");
-	printf("%d\n", ft_write(1, "\n\033[0mHola!\n", 11));
-	printf("%ld\n", write(1, "\n\033[0mHola!\n", 11));
+	ft_putnbr_fd((ft_write(1, "\n\033[0mHola! \n", 11)), 1);
+	ft_putnbr_fd((write(1, "\n\033[0mHola! \n", 11)), 1);
+	printf("\n\n");
+	s1 = ft_strdup("Hello");
+	printf("%s\n", s1);
+	free(s1);
 }
+
