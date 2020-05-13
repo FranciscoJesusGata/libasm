@@ -6,7 +6,7 @@
 #    By: fgata-va <fgata-va@student.42madrid.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/02 18:54:04 by fgata-va          #+#    #+#              #
-#    Updated: 2020/05/10 17:44:24 by fgata-va         ###   ########.fr        #
+#    Updated: 2020/05/12 17:37:47 by fgata-va         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,11 @@ ft_strcmp:
 				mov cl,byte [rdi]
 				mov dl,byte [rsi]
 				cmp dl, cl
-				jl less
-				jg greater
-				add rdi, byte 1
-				add rsi, byte 1
-				cmp byte [rsi], 0x0
+				jl less				;if(*rdi < *rsi) {return -1;}
+				jg greater			;if (*rdi > *rsi) {return 1;}
+				add rdi, byte 1		;rdi++
+				add rsi, byte 1		;rsi++
+				cmp byte [rsi], 0x0	;if (*rdi == 0 || *rsi == 0) {return 0;}
 				je equal
 				cmp byte [rdi], 0x0
 				je equal

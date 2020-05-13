@@ -6,7 +6,7 @@
 /*   By: fgata-va <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/08 23:13:38 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/05/12 14:38:32 by fgata-va         ###   ########.fr       */
+/*   Updated: 2020/05/13 16:40:23 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int			ft_strcmp_c(const char *s1, const char *s2)
 	return (0);
 }
 
-/*char				*ft_strdup_c(const char *s1)
+char				*ft_strdup_c(const char *s1)
 {
 	char			*s2;
 	size_t			l;
@@ -78,7 +78,7 @@ int			ft_strcmp_c(const char *s1, const char *s2)
 	else
 		return (0);
 	return (s2);
-}*/
+}
 
 void	ft_putstr_fd(char *s, int fd)
 {
