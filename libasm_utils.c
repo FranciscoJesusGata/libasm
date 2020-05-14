@@ -6,7 +6,7 @@
 /*   By: fgata-va <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/08 23:13:38 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/05/13 16:40:23 by fgata-va         ###   ########.fr       */
+/*   Updated: 2020/05/14 17:20:15 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,3 +114,64 @@ void	ft_putnbr_fd(int n, int fd)
 	c = (n % 10) + '0';
 	write(fd, &c, 1);
 }
+
+char		*ft_strchr(const char *s, int c)
+{
+	while (*s != '\0')
+	{
+		if (c == *s)
+			return ((char *)s);
+		s++;
+	}
+	if (c == '\0' && *s == '\0')
+		return ((char *)s);
+	return (NULL);
+}
+
+int			ft_validate_base(char *base)
+{
+	char	*aux;
+	if (ft_strlen(base) <= 1)
+		return (0);
+	while (*base != 0)
+	{
+		if (*base == ' ' || *base == '-' || *base == '+')
+			return (0);
+		aux = base;
+		while (*(aux++) != 0)
+		{
+			if (*base == *aux)
+				return (0);
+		}
+		base++;
+	}
+	return (1);
+}
+
+int					ft_atoi_base_c(char *str, char *base)
+{
+	long int		num;
+	int				neg;
+	int				len;
+
+	if (ft_validate_base(base) == 0)
+		return (0);
+	neg = 1;
+	len = ft_strlen(base);
+	while (ft_strchr("\t\n\v\f\r ", *str) != 0)
+			str++;
+	while (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+				neg += -1;
+		str++;
+	}
+	num = 0;
+	while (*str && ft_strchr(base, *str) != NULL)
+	{
+		num = (num * len) + (ft_strchr(base, *str) - base);
+		str++;
+	}
+	return (num * neg);
+}
+
