@@ -6,7 +6,7 @@
 #    By: fgata-va <fgata-va@student.42madrid.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/02 19:23:52 by fgata-va          #+#    #+#              #
-#    Updated: 2020/05/13 15:04:35 by fgata-va         ###   ########.fr        #
+#    Updated: 2020/05/13 17:50:26 by fgata-va         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ ft_write:
 		ret
 error:
 		neg rax
-		mov rdi, rax
+		mov r10, rax
 		call __errno_location
-		mov [rax], rdi
+		mov qword[rax], r10
 		mov rax, -1
 		ret
