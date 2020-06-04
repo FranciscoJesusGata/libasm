@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 10:22:37 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/05/13 16:38:49 by fgata-va         ###   ########.fr       */
+/*   Updated: 2020/06/02 18:35:18 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,8 +258,6 @@ void	read_tests()
 	ft_test_read("What is 42? 42 is the answer to the univer" , 40);
 }
 
-
-
 void	ft_test_dup(const char *str)
 {
 	char	*dst;
@@ -281,3 +279,21 @@ void	ft_test_dup(const char *str)
 	free(dst2);
 }
 
+void	ft_test_atoi(char *str, char *base)
+{
+	int expected;
+	int actual;
+
+	expected = ft_atoi_base_c(str, base);
+	actual = ft_atoi_base(str, base);
+	if (expected == actual)
+		ft_putstr_fd("\033[1;32mOK! ", 1);
+	else
+	{
+		ft_putstr_fd("\033[1;31mKO ", 1);
+		ft_putstr_fd("\033[0mYour function returned: ", 1);
+		ft_putnbr_fd(actual, 1);
+		ft_putstr_fd("\nThe program expected: ", 1);
+		ft_putnbr_fd(expected, 1);
+	}
+}

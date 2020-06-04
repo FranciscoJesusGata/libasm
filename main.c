@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/07 17:36:38 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/05/13 16:42:53 by fgata-va         ###   ########.fr       */
+/*   Updated: 2020/06/04 21:12:15 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ int			main(void)
 	ft_putstr_fd("\033[1;36m                  LibASM Tester\033[0m\n", 1);
 	ft_putstr_fd("                  By: fgata-va\n\n", 1);
 	ft_putstr_fd("\033[1;36m             [~ MANDATORY PART  ~]\033[0m\n", 1);
+
+/********************
+** ft_strlen tests **
+*********************/
 
 	ft_putstr_fd("Test_01: ft_strlen...........", 1);
 	ft_test_len("");
@@ -39,6 +43,10 @@ Don't leave, it's my fault (yeah)\
 'Cause when it all comes crashing down I'll need you");
 	ft_putstr_fd("\033[0m\n", 1);
 
+/********************
+** ft_strcpy tests **
+*********************/
+
 	ft_putstr_fd("Test_02: ft_strcpy...........", 1);
 	ft_test_cpy("");
 	ft_test_cpy("Hello");
@@ -58,6 +66,10 @@ Don't leave, it's my fault\
 Don't leave, it's my fault (yeah)\
 'Cause when it all comes crashing down I'll need you");
 	ft_putstr_fd("\033[0m\n", 1);
+
+/********************
+** ft_strcmp tests **
+*********************/
 
 	ft_putstr_fd("\033[0mTest_03: ft_strcmp...........", 1);
 	ft_test_cmp("", "");
@@ -89,13 +101,25 @@ Don't leave, it's my fault (yeah)\
 'Cause when it all comes crashing down I'll need you");
 	ft_putstr_fd("\033[0m\n", 1);
 
+/*******************
+** ft_write tests **
+********************/
+
 	ft_putstr_fd("\033[0mTest_04: ft_write............", 1);
 	write_tests();
 	ft_putstr_fd("\033[0m\n", 1);
 
+/******************
+** ft_read tests **
+*******************/
+
 	ft_putstr_fd("\033[0mTest_05: ft_read.............", 1);
 	read_tests();
 	ft_putstr_fd("\033[0m\n", 1);
+
+/********************
+** ft_strdup tests **
+*********************/
 
 	ft_putstr_fd("\033[0mTest_05: ft_strdup...........", 1);
 	ft_test_dup("");
@@ -114,5 +138,8 @@ Don't leave, it's my fault (yeah)\
 'Cause when it all comes crashing down I'll need you");
 	ft_putstr_fd("\033[0m\n", 1);
 
+
+	ft_putstr_fd("\033[0mTest_05: ft_atoi_base........", 1);
+	ft_test_atoi(" \n\t\v\f\r-+12345", "1234567890");
 }
 
