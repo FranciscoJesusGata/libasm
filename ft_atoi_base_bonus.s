@@ -1,5 +1,16 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    ft_atoi_base_bonus.s                               :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: fgata-va <fgata-va@student.42madrid.c      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/06/04 22:56:36 by fgata-va          #+#    #+#              #
+#    Updated: 2020/06/05 23:17:48 by fgata-va         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-		global ft_atoi_base
+		global ft_atoi_base_bonus
 		section .text
 
 ft_validate_base:
@@ -45,21 +56,22 @@ not_valid:
 		xor rax, rax
 		ret
 
-;		int		ft_atoi_base(char *str, char *base);
-ft_atoi_base:
+;		int		ft_atoi_base_bonus(char *str, char *base);
+ft_atoi_base_bonus:
 		push rdi
 		mov rdi, rsi
 		call ft_validate_base
 		pop rdi
-		xor r11, r11
-		mov rdx, 1
 		cmp rax, 0
 		je return
-		xor rax, rax
-		jne clean_str
+		jne start_atoi
 inc_str_index:
 		inc r11
 		jmp clean_str
+start_atoi:
+		xor rax, rax
+		mov rdx, 1
+		xor r11, r11
 clean_str:
 		cmp byte[rdi + r11], 0x20
 		je inc_str_index

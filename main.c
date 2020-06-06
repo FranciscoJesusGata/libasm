@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/07 17:36:38 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/06/04 21:12:15 by fgata-va         ###   ########.fr       */
+/*   Updated: 2020/06/06 13:03:10 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int			main(void)
 {
 	ft_putstr_fd("\033[1;36m                  LibASM Tester\033[0m\n", 1);
 	ft_putstr_fd("                  By: fgata-va\n\n", 1);
-	ft_putstr_fd("\033[1;36m             [~ MANDATORY PART  ~]\033[0m\n", 1);
+	ft_putstr_fd("\033[1;36m              [~ MANDATORY PART ~]\033[0m\n", 1);
 
-/********************
+/*
 ** ft_strlen tests **
-*********************/
+*/
 
 	ft_putstr_fd("Test_01: ft_strlen...........", 1);
 	ft_test_len("");
@@ -43,9 +43,9 @@ Don't leave, it's my fault (yeah)\
 'Cause when it all comes crashing down I'll need you");
 	ft_putstr_fd("\033[0m\n", 1);
 
-/********************
+/*
 ** ft_strcpy tests **
-*********************/
+*/
 
 	ft_putstr_fd("Test_02: ft_strcpy...........", 1);
 	ft_test_cpy("");
@@ -67,9 +67,9 @@ Don't leave, it's my fault (yeah)\
 'Cause when it all comes crashing down I'll need you");
 	ft_putstr_fd("\033[0m\n", 1);
 
-/********************
+/*
 ** ft_strcmp tests **
-*********************/
+*/
 
 	ft_putstr_fd("\033[0mTest_03: ft_strcmp...........", 1);
 	ft_test_cmp("", "");
@@ -101,25 +101,25 @@ Don't leave, it's my fault (yeah)\
 'Cause when it all comes crashing down I'll need you");
 	ft_putstr_fd("\033[0m\n", 1);
 
-/*******************
+/*
 ** ft_write tests **
-********************/
+*/
 
 	ft_putstr_fd("\033[0mTest_04: ft_write............", 1);
 	write_tests();
 	ft_putstr_fd("\033[0m\n", 1);
 
-/******************
+/*
 ** ft_read tests **
-*******************/
+*/
 
 	ft_putstr_fd("\033[0mTest_05: ft_read.............", 1);
 	read_tests();
 	ft_putstr_fd("\033[0m\n", 1);
 
-/********************
-** ft_strdup tests **
-*********************/
+/*********************
+ ** ft_strdup tests **
+ *********************/
 
 	ft_putstr_fd("\033[0mTest_05: ft_strdup...........", 1);
 	ft_test_dup("");
@@ -138,8 +138,50 @@ Don't leave, it's my fault (yeah)\
 'Cause when it all comes crashing down I'll need you");
 	ft_putstr_fd("\033[0m\n", 1);
 
+/*************************************************
+ **                                             **
+ **                 BONUS PART                  **
+ **                                             **
+ *************************************************/
+	ft_putstr_fd("\033[1;36m              [~   BONUS PART   ~]\033[0m\n", 1);
+
+/*
+** ft_atoi_base **
+*/
 
 	ft_putstr_fd("\033[0mTest_05: ft_atoi_base........", 1);
-	ft_test_atoi(" \n\t\v\f\r-+12345", "1234567890");
+	ft_test_atoi("", "");
+	ft_test_atoi("10", "");
+	ft_test_atoi("", "01");
+	ft_test_atoi("42", "0123456789");
+	ft_test_atoi("101010", "01");
+	ft_test_atoi("2a", "0123456789abcdef");
+	ft_test_atoi("\t\n\v\f\r 42", "01234");
+	ft_test_atoi("fde0", "0123456789abcdef");
+	write(1, "\n", 1);
+	ft_putstr_fd("                             ", 1);
+	ft_test_atoi("42", "0");
+	ft_test_atoi("42", "01");
+	ft_test_atoi("101010", "011");
+	ft_test_atoi("10", "0+");
+	ft_test_atoi("11", "-0");
+	ft_test_atoi("101011", "\t321");
+	ft_test_atoi("542", "0123\n456789");
+	ft_test_atoi("10", "01\v");
+	write(1, "\n", 1);
+	ft_putstr_fd("                             ", 1);
+	ft_test_atoi("11", "1\f0");
+	ft_test_atoi("42", "0123456789\r");
+	ft_test_atoi("101010", "0 1");
+	ft_test_atoi("ffff", "0123456789abcdef");
+	ft_test_atoi("---+-++-+-+--10--+-+-fe", "01");
+	ft_test_atoi(" \n\t\r\f\v--+-2a", "0123456789abcdef");
+	ft_test_atoi(" --+-\n--+f5 ", "0123456789abcdef");
+	ft_test_atoi("--+ --f5-+ ff","0123456789abcdef");
+	write(1, "\n", 1);
+	ft_putstr_fd("                             ", 1);
+	ft_test_atoi("-2147483648","0123456789");
+	ft_test_atoi("+2147483647","0123456789");
+	write(1,"\n",1);
 }
 

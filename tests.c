@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 10:22:37 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/06/02 18:35:18 by fgata-va         ###   ########.fr       */
+/*   Updated: 2020/06/05 23:03:39 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,7 +285,7 @@ void	ft_test_atoi(char *str, char *base)
 	int actual;
 
 	expected = ft_atoi_base_c(str, base);
-	actual = ft_atoi_base(str, base);
+	actual = ft_atoi_base_bonus(str, base);
 	if (expected == actual)
 		ft_putstr_fd("\033[1;32mOK! ", 1);
 	else
@@ -293,7 +293,9 @@ void	ft_test_atoi(char *str, char *base)
 		ft_putstr_fd("\033[1;31mKO ", 1);
 		ft_putstr_fd("\033[0mYour function returned: ", 1);
 		ft_putnbr_fd(actual, 1);
+		write(1, "\n", 1);
 		ft_putstr_fd("\nThe program expected: ", 1);
 		ft_putnbr_fd(expected, 1);
+		write(1, "\n", 1);
 	}
 }
