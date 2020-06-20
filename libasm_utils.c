@@ -6,7 +6,7 @@
 /*   By: fgata-va <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/08 23:13:38 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/06/05 12:27:43 by fgata-va         ###   ########.fr       */
+/*   Updated: 2020/06/20 18:03:01 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,30 +155,5 @@ int			ft_validate_base(char *base)
 	return (1);
 }
 
-int					ft_atoi_base_c(char *str, char *base)
-{
-	long int		num;
-	int				neg;
-	int				len;
 
-	if (ft_validate_base(base) == 0)
-		return (0);
-	neg = 1;
-	len = ft_strlen(base);
-	while (ft_isspace(*str) != 0)
-			str++;
-	while (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-				neg *= -1;
-		str++;
-	}
-	num = 0;
-	while (*str && ft_strchr(base, *str) != NULL)
-	{
-		num = (num * len) + (ft_strchr(base, *str) - base);
-		str++;
-	}
-	return (num * neg);
-}
 
