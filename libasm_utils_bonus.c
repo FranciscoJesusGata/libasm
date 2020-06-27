@@ -6,11 +6,51 @@
 /*   By: fgata-va <fgata-va@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 19:15:26 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/06/20 18:03:00 by fgata-va         ###   ########.fr       */
+/*   Updated: 2020/06/27 19:39:05 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm.h"
+
+char		*ft_strchr(const char *s, int c)
+{
+	while (*s != '\0')
+	{
+		if (c == *s)
+			return ((char *)s);
+		s++;
+	}
+	if (c == '\0' && *s == '\0')
+		return ((char *)s);
+	return (NULL);
+}
+
+int		ft_isspace(char s)
+{
+	if (ft_strchr("\t\n\v\f\r ", s))
+		return (1);
+	return (0);
+}
+
+int			ft_validate_base(char *base)
+{
+	char	*aux;
+	if (ft_strlen(base) <= 1)
+		return (0);
+	while (*base != 0)
+	{
+		if (ft_isspace(*base) || *base == '-' || *base == '+')
+			return (0);
+		aux = base;
+		while (*(aux++) != 0)
+		{
+			if (*base == *aux)
+				return (0);
+		}
+		base++;
+	}
+	return (1);
+}
 
 int					ft_atoi_base_c(char *str, char *base)
 {
@@ -67,3 +107,38 @@ int		ft_list_size_c(t_list *begin_list)
 	return(i);
 }
 
+t_list          *ft_swap(t_list *begin_list, t_list *nxt)
+{
+        t_list *aux;
+
+        aux = nxt->next;
+        nxt->next = begin_list;
+        begin_list->next = aux;
+        return (nxt);
+}
+
+void            ft_list_sort(t_list **begin_list, int (*cmp)())
+{
+        int             i;
+        int             j;
+        int             len;
+        t_list  **head;
+
+        if (begin_list == NULL || *begin_list == NULL || (*begin_list)->next == NULL)
+                return ;
+        len = ft_list_size_c(*begin_list);
+        i = 0;
+        while (i < len)
+        {
+                j = 0;
+                head = begin_list;
+                while (j < len - i - 1)
+                {
+                        if (((*cmp)((*head)->data, (*head)->next->data)) > 0)
+                                *head = ft_swap(*head, (*head)->next);
+                        head = &(*head)->next;
+                        j++;
+                }
+                i++;
+        }
+}

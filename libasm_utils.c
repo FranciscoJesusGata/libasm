@@ -6,7 +6,7 @@
 /*   By: fgata-va <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/08 23:13:38 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/06/20 18:03:01 by fgata-va         ###   ########.fr       */
+/*   Updated: 2020/06/27 19:23:29 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,46 +114,4 @@ void	ft_putnbr_fd(int n, int fd)
 	c = (n % 10) + '0';
 	write(fd, &c, 1);
 }
-
-char		*ft_strchr(const char *s, int c)
-{
-	while (*s != '\0')
-	{
-		if (c == *s)
-			return ((char *)s);
-		s++;
-	}
-	if (c == '\0' && *s == '\0')
-		return ((char *)s);
-	return (NULL);
-}
-
-int		ft_isspace(char s)
-{
-	if (ft_strchr("\t\n\v\f\r ", s))
-		return (1);
-	return (0);
-}
-
-int			ft_validate_base(char *base)
-{
-	char	*aux;
-	if (ft_strlen(base) <= 1)
-		return (0);
-	while (*base != 0)
-	{
-		if (ft_isspace(*base) || *base == '-' || *base == '+')
-			return (0);
-		aux = base;
-		while (*(aux++) != 0)
-		{
-			if (*base == *aux)
-				return (0);
-		}
-		base++;
-	}
-	return (1);
-}
-
-
 
