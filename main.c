@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/07 17:36:38 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/06/06 13:03:10 by fgata-va         ###   ########.fr       */
+/*   Updated: 2020/07/06 18:23:22 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,5 +183,25 @@ Don't leave, it's my fault (yeah)\
 	ft_test_atoi("-2147483648","0123456789");
 	ft_test_atoi("+2147483647","0123456789");
 	write(1,"\n",1);
+
+
+	ft_putstr_fd("\033[0mTest_05: ft_list_push_front..", 1);
+	ft_test_push_front("1 2 3 4 5 6", "0");
+	ft_test_push_front("", "0");
+	ft_test_push_front("0", "");
+	ft_test_push_front("42 is the", "answer");
+	ft_test_push_front("0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19", "20");
+	ft_test_push_front(NULL, "20");
+	ft_test_push_front("42", NULL);
+	write(1, "\n", 1);
+
+	ft_putstr_fd("\033[0mTest_06: ft_list_size........", 1);
+	ft_test_size("0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20");
+	ft_test_size("");
+	ft_test_size(NULL);
+	ft_test_size("1");
+	ft_test_size("1 2");
+	ft_test_size("The answer is 42");
+	write(1, "\n", 1);
 }
 

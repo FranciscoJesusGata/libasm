@@ -6,16 +6,16 @@
 #    By: fgata-va <fgata-va@student.42madrid.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/12 13:55:56 by fgata-va          #+#    #+#              #
-#    Updated: 2020/05/13 16:44:06 by fgata-va         ###   ########.fr        #
+#    Updated: 2020/06/08 20:27:45 by fgata-va         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-section .text
+		section .text
 
-global ft_strdup
-extern malloc
-extern ft_strlen
-extern ft_strcpy
+		global ft_strdup
+		extern malloc
+		extern ft_strlen
+		extern ft_strcpy
 
 ft_strdup:
 			cmp rdi, 0x0		;if (rdi == NULL) {return NULL;}

@@ -5,140 +5,194 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgata-va <fgata-va@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/17 19:15:26 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/06/27 19:39:05 by fgata-va         ###   ########.fr       */
+/*   Created: 2020/06/29 18:51:17 by fgata-va          #+#    #+#             */
+/*   Updated: 2020/07/04 11:44:38 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm.h"
 
-char		*ft_strchr(const char *s, int c)
+void				*ft_calloc(size_t count, size_t size)
 {
+	void			*s;
+	unsigned int	i;
+	unsigned int	len;
+
+	if (!(s = malloc(size * count)))
+		return (NULL);
+	len = count * size;
+	i = 0;
+	while (i < len)
+	{
+		((unsigned char *)s)[i] = '\0';
+		i++;
+	}
+	return (s);
+}
+
+int			ft_wrds(char const *s, char c)
+{
+	int wrds;
+	int wrd_fnd;
+
+	wrds = 0;
+	wrd_fnd = 0;
 	while (*s != '\0')
 	{
-		if (c == *s)
-			return ((char *)s);
+		if (*s != c && wrd_fnd == 0)
+		{
+			wrds++;
+			wrd_fnd = 1;
+		}
+		else if (*s == c)
+			wrd_fnd = 0;
 		s++;
 	}
-	if (c == '\0' && *s == '\0')
-		return ((char *)s);
-	return (NULL);
+	return (wrds);
 }
 
-int		ft_isspace(char s)
+int			ft_chars(char const *s, char c)
 {
-	if (ft_strchr("\t\n\v\f\r ", s))
-		return (1);
-	return (0);
-}
+	int cs;
 
-int			ft_validate_base(char *base)
-{
-	char	*aux;
-	if (ft_strlen(base) <= 1)
-		return (0);
-	while (*base != 0)
+	cs = 0;
+	while (*s != c && *s != '\0')
 	{
-		if (ft_isspace(*base) || *base == '-' || *base == '+')
-			return (0);
-		aux = base;
-		while (*(aux++) != 0)
-		{
-			if (*base == *aux)
-				return (0);
-		}
-		base++;
+		cs++;
+		s++;
 	}
-	return (1);
+	return (cs);
 }
 
-int					ft_atoi_base_c(char *str, char *base)
+void		ft_del_matrix(char **matrix)
 {
-	long int		num;
-	int				neg;
-	int				len;
+	int		i;
 
-	if (ft_validate_base(base) == 0)
-		return (0);
-	neg = 1;
-	len = ft_strlen(base);
-	while (ft_isspace(*str) != 0)
-			str++;
-	while (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-				neg *= -1;
-		str++;
-	}
-	num = 0;
-	while (*str && ft_strchr(base, *str) != NULL)
-	{
-		num = (num * len) + (ft_strchr(base, *str) - base);
-		str++;
-	}
-	return (num * neg);
-}
-
-void	ft_list_push_front_c(t_list **begin_list, void *data)
-{
-	t_list *new;
-
-	if (begin_list == NULL)
-		return ;
-	if(!(new = malloc(sizeof(t_list))))
-		return ;
-	new->data = data;
-	new->next = *begin_list;
-	*begin_list = new;
-}
-
-int		ft_list_size_c(t_list *begin_list)
-{
-	int i;
-
-	if (begin_list == NULL)
-		return (0);
 	i = 0;
-	while(begin_list != NULL)
+	while (matrix[i])
 	{
+		free(matrix[i]);
 		i++;
-		begin_list = begin_list->next;
 	}
-	return(i);
+	free(matrix);
 }
 
-t_list          *ft_swap(t_list *begin_list, t_list *nxt)
+void		ft_fillstr(int j, char **wrds, char const *s, char c)
 {
-        t_list *aux;
+	int		i;
 
-        aux = nxt->next;
-        nxt->next = begin_list;
-        begin_list->next = aux;
-        return (nxt);
+	i = 0;
+	while (*s != c && *s != '\0')
+	{
+		wrds[j][i++] = *s;
+		s++;
+	}
 }
 
-void            ft_list_sort(t_list **begin_list, int (*cmp)())
+char		**ft_split(char const *s, char c)
 {
-        int             i;
-        int             j;
-        int             len;
-        t_list  **head;
+	char	**wrds;
+	int		wrd_l;
+	int		j;
 
-        if (begin_list == NULL || *begin_list == NULL || (*begin_list)->next == NULL)
-                return ;
-        len = ft_list_size_c(*begin_list);
-        i = 0;
-        while (i < len)
-        {
-                j = 0;
-                head = begin_list;
-                while (j < len - i - 1)
-                {
-                        if (((*cmp)((*head)->data, (*head)->next->data)) > 0)
-                                *head = ft_swap(*head, (*head)->next);
-                        head = &(*head)->next;
-                        j++;
-                }
-                i++;
-        }
+	if (!s)
+		return (NULL);
+	if (!(wrds = ft_calloc(ft_wrds(s, c) + 1, sizeof(char *))))
+		return (NULL);
+	j = 0;
+	while (*s != '\0')
+	{
+		while (*s == c)
+			s++;
+		wrd_l = ft_chars(s, c);
+		if (wrd_l > 0 && !(wrds[j] = ft_calloc((wrd_l + 1), sizeof(char))))
+		{
+			ft_del_matrix(wrds);
+			return (NULL);
+		}
+		ft_fillstr(j, wrds, s, c);
+		s += wrd_l;
+		j++;
+	}
+	return (wrds);
+}
+
+void		ft_create_lst(t_list **new_lst, void *input)
+{
+	t_list	*current;
+	void	**data;
+	int		i;
+
+	*new_lst = malloc(sizeof(t_list));
+	if (!input)
+	{
+		data = NULL;
+		(*new_lst)->data = data;
+		(*new_lst)->next = NULL;
+		return ;
+	}
+	data = (void **)ft_split(input, ' ');
+	current = *new_lst;
+	i = 0;
+	if(*data)
+	{
+		while (data[i + 1])
+		{
+			current->data = data[i];
+			current->next = malloc(sizeof(t_list));
+			current = current->next;
+			i++;
+		}
+		current->data = data[i];
+	}
+	else
+		current->data = *data;
+	current->next = NULL;
+	current = NULL;
+	free(data);
+}
+
+void		ft_clean_lst(t_list **head)
+{
+	t_list	*current;
+	t_list	*nxt;
+
+	current = *head;
+	while (current != NULL)
+	{
+		nxt = current->next;
+		if (current->data)
+			free(current->data);
+		free(current);
+		current = nxt;
+	}
+	current = NULL;
+	nxt = NULL;
+	*head = NULL;
+}
+
+int			ft_cmp_lst(t_list **l1, t_list **l2)
+{
+	int result;
+	t_list *lst1;
+	t_list *lst2;
+
+	lst1 = *l1;
+	lst2 = *l2;
+	result = 0;
+	while (lst1 && lst2)
+	{
+		if (!lst1->data && !lst2->data)
+			return(0);
+		else if (!lst1->data || !lst2->data)
+			return(1);
+		if(ft_strncmp(lst1->data, lst2->data, ft_strlen_c(lst1->data)) != 0)
+		{
+			result = 1;
+			break ;
+		}
+		lst1 = lst1->next;
+		lst2 = lst2->next;
+	}
+	return (result);
 }

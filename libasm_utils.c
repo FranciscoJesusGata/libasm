@@ -3,82 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   libasm_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgata-va <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgata-va <fgata-va@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/08 23:13:38 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/06/27 19:23:29 by fgata-va         ###   ########.fr       */
+/*   Created: 2020/06/29 10:36:49 by fgata-va          #+#    #+#             */
+/*   Updated: 2020/07/04 11:42:00 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm.h"
-
-size_t		ft_strlen_c(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-char		*ft_strcpy_c(char *dst, const char *src)
-{
-	int		i;
-
-	i = 0;
-	if (!src)
-		return (NULL);
-	while (src[i] != '\0')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
-}
-
-int			ft_strcmp_c(const char *s1, const char *s2)
-{
-	size_t	i;
-	
-	i = 0;
-	while (((unsigned char)s1[i] != 0) && ((unsigned char)s2[i] != 0))
-	{
-		if ((unsigned char)s1[i] != (unsigned char)s2[i])
-		{
-			if ((unsigned char)s1[i] < (unsigned char)s2[i])
-				return (1);
-			else
-				return (-1);
-		}
-		i++;
-	}
-	return (0);
-}
-
-char				*ft_strdup_c(const char *s1)
-{
-	char			*s2;
-	size_t			l;
-	unsigned int	i;
-
-	i = 0;
-	l = ft_strlen(s1);
-	s2 = (char *)malloc(l + 1);
-	if (s2)
-	{
-		while (s1[i] != '\0' && i < l)
-		{
-			s2[i] = s1[i];
-			i++;
-		}
-		s2[i] = '\0';
-	}
-	else
-		return (0);
-	return (s2);
-}
 
 void	ft_putstr_fd(char *s, int fd)
 {
@@ -115,3 +47,20 @@ void	ft_putnbr_fd(int n, int fd)
 	write(fd, &c, 1);
 }
 
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	unsigned int	i;
+
+	if (n == 0)
+		return (0);
+	i = 0;
+	while (((unsigned char)s1[i] != 0 || (unsigned char)s2[i] != 0) && i < n)
+	{
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	if (((unsigned char)s1[i] != (unsigned char)s2[i]) && i < n)
+		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	return (0);
+}
