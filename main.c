@@ -121,7 +121,7 @@ Don't leave, it's my fault (yeah)\
  ** ft_strdup tests **
  *********************/
 
-	ft_putstr_fd("\033[0mTest_05: ft_strdup...........", 1);
+	ft_putstr_fd("\033[0mTest_06: ft_strdup...........", 1);
 	ft_test_dup("");
 	ft_test_dup("Hello World");
 	ft_test_dup("\1 \t\t sdfw'20 \\ 03422");
@@ -149,7 +149,7 @@ Don't leave, it's my fault (yeah)\
 ** ft_atoi_base **
 */
 
-	ft_putstr_fd("\033[0mTest_05: ft_atoi_base........", 1);
+	ft_putstr_fd("\033[0mTest_07: ft_atoi_base........", 1);
 	ft_test_atoi("", "");
 	ft_test_atoi("10", "");
 	ft_test_atoi("", "01");
@@ -185,7 +185,7 @@ Don't leave, it's my fault (yeah)\
 	write(1,"\n",1);
 
 
-	ft_putstr_fd("\033[0mTest_05: ft_list_push_front..", 1);
+	ft_putstr_fd("\033[0mTest_08: ft_list_push_front..", 1);
 	ft_test_push_front("1 2 3 4 5 6", "0");
 	ft_test_push_front("", "0");
 	ft_test_push_front("0", "");
@@ -195,7 +195,7 @@ Don't leave, it's my fault (yeah)\
 	ft_test_push_front("42", NULL);
 	write(1, "\n", 1);
 
-	ft_putstr_fd("\033[0mTest_06: ft_list_size........", 1);
+	ft_putstr_fd("\033[0mTest_09: ft_list_size........", 1);
 	ft_test_size("0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20");
 	ft_test_size("");
 	ft_test_size(NULL);
