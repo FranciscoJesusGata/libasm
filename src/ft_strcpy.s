@@ -18,9 +18,9 @@ ft_strcpy:
 				cmp			byte [rsi], 0x0				;if(rsi == 'NULL'): return NULL
 				je			return_null
 loop:
+				inc			rcx					;rcx++
 				mov			al, [rsi + rcx]				;al = rsi[rcx]
 				mov			[rdi + rcx], al				;rdi[rcx] = al
-				inc			rcx							;rcx++
 				cmp			byte [rsi + rcx], 0x0		;while(rsi[rcx] != '\0')
 				jne			loop
 				
